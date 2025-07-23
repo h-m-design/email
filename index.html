@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HM Design Emails</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f6f6;
+      margin: 0;
+      padding: 2rem;
+    }
+    .email-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .email-preview {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      overflow: hidden;
+      width: 400px;
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+    }
+    .email-preview:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    }
+    .email-iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      display: block;
+      pointer-events: none;
+    }
+    .email-filename {
+      padding: 0.5rem 1rem;
+      background: #fafafa;
+      border-top: 1px solid #eee;
+      font-size: 0.95rem;
+      color: #555;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>HM Design Emails</h1>
+  <div class="email-list" id="emailList"></div>
+  <script>
+    // List all email HTML files in the same folder except index.html
+    const emailFiles = [
+  "Better flights, better deals, better personalization.html",
+  "Brooks Running.html",
+  "Elysium.html",
+  "email-inspiration-from-allpress-espresso-new-zealand-28.html",
+  "email-inspiration-from-benjamin-moore-10.html",
+  "email-inspiration-from-birch-lane.html",
+  "email-inspiration-from-blueland-44.html",
+  "email-inspiration-from-brz-4.html",
+  "email-inspiration-from-echo-water-26.html",
+  "email-inspiration-from-flakes-3.html",
+  "email-inspiration-from-gozney-6.html",
+  "email-inspiration-from-impossibrew-8.html",
+  "email-inspiration-from-jurrien-stojo-14.html",
+  "email-inspiration-from-loop-earplugs-25.html",
+  "email-inspiration-from-lume-cube-20.html",
+  "email-inspiration-from-mate-the-label-62.html",
+  "email-inspiration-from-mixtons-4.html",
+  "email-inspiration-from-mudwtr-48.html",
+  "email-inspiration-from-nanuk-11.html",
+  "email-inspiration-from-nolan-interior-55.html",
+  "email-inspiration-from-ogee-121.html",
+  "email-inspiration-from-our-place-67.html",
+  "email-inspiration-from-plae-32.html",
+  "email-inspiration-from-rare-beauty-19.html",
+  "email-inspiration-from-rei-corte-madera.html",
+  "email-inspiration-from-rumpl-59.html",
+  "email-inspiration-from-snowe-40.html",
+  "email-inspiration-from-soludos-59.html",
+  "email-inspiration-from-sonos-16.html",
+  "email-inspiration-from-sungod-54.html",
+  "email-inspiration-from-tecovas-78.html",
+  "email-inspiration-from-the-new-york-times-store-11.html",
+  "email-inspiration-from-thumbtack-11.html",
+  "email-inspiration-from-viia-46.html",
+  "Explore even more ways to design your ideal workflow.html",
+  "Manchester United.html",
+  "Stress-Free Meals for Baby 🍎 $30 OFF.html",
+  "Your chance at a $500 gift card—download the app now!.html"
+];
+    // This list should be generated dynamically by a build script or server.
+    // For demo purposes, add your email HTML files here:
+    // Example:
+    // emailFiles.push('welcome.html', 'newsletter.html', 'reset-password.html');
+
+    // Try to fetch the directory listing if running on a server that supports it
+    
+        renderEmailPreviews();
+     
+
+    function renderEmailPreviews() {
+      const container = document.getElementById('emailList');
+      if (emailFiles.length === 0) {
+        container.innerHTML = '<p>No email HTML files found in this folder.</p>';
+        return;
+      }
+      emailFiles.forEach(file => {
+        const preview = document.createElement('div');
+        preview.className = 'email-preview';
+        preview.title = 'Click to open in new tab';
+        preview.onclick = () => window.open(file, '_blank');
+        preview.innerHTML = `
+          <iframe src="${file}" class="email-iframe" title="${file}"></iframe>
+          <div class="email-filename">${file}</div>
+        `;
+        container.appendChild(preview);
+      });
+    }
+  </script>
+</body>
+</html>
